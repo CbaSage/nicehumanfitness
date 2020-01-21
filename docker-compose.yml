@@ -1,0 +1,23 @@
+version: "3"
+services:
+  webserver:
+    build: "./webserver"
+#    depends_on:
+#      - listings-service-db
+    #set this environment variable
+    #@listings-service means point this at the service with this name without needing an IP
+#    environment:
+#      - DB_URI=mysql://root:password@listings-service-db/db?jcharset=UTF8
+    ports:
+      - 4000:4000
+    #syncs ./listings-service to container:/opt/app
+    volumes:
+      - ./webserver:/opt/app
+
+#  listings-service-db:
+#    environment:
+#      - MYSQL_ROOT_PASSWORD=password
+#      - MYSQL_DATABASE=db
+#    image: mysql:5.7.20
+#    ports:
+#      - 0.0.0:7200:3306
